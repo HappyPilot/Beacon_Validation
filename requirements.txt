@@ -1,0 +1,8 @@
+#selenium==4.8.0
+behave == 1.2.6
+numpy==1.24.1
+pandas==1.5.3
+cx-Oracle==8.3.0
+torch==2.0.0
+google-search==1.1.0
+haralyzer
