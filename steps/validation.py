@@ -72,7 +72,7 @@ def three_p_beacons_check(context):
         url = request['url']
 
         # Check if the URL contains the target string
-        if 'https://us-east-1.ads.digital.disneyadvertising.com' in url:
+        if 'ads.digital.disneyadvertising.com' in url:
             # Get the response content and extract the text
             response_content = response['content']
             response_text = response_content.get('text', '')
