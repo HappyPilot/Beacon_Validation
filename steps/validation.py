@@ -16,9 +16,9 @@ class PrintInColor:
     def red(cls, s, **kwargs):
         print(cls.COLOR + s + cls.END, **kwargs)
 #insert path to csv file
-path_csv = '/Users/Dmytro.Dubovsky.-ND/Downloads/ANDROIDTV_2_22_0_BEACONS.csv'
+path_csv = ''
 #insert path to har file
-path_har = '/Users/Dmytro.Dubovsky.-ND/Downloads/ANDROIDTV_2_22_0_BEACONS.har'
+path_har = ''
 
 
 @step('Parsing csv')
