@@ -11,9 +11,9 @@ import re
 csv.field_size_limit(sys.maxsize)
 
 #insert path to csv file
-path_csv = '/Users/Dmytro.Dubovsky.-ND/Downloads/tvOS DAI adpossition #1.csv'
+path_csv = ''
 #insert path to har file
-path_har = '/Users/Dmytro.Dubovsky.-ND/Downloads/iOS_2_22_0_adbeacons_pod.har'
+path_har = ''
 
 
 @step('Parsing csv')
