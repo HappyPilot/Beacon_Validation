@@ -16,6 +16,8 @@ path_csv = ''
 path_har = ''
 
 
+
+
 @step('Parsing csv')
 def pars_csv(context):
 
@@ -24,26 +26,26 @@ def pars_csv(context):
         reader = csv.DictReader(csvfile)
         for row in reader:
             url = row['URL']  # replace 'url' with the actual column name
-            params = params = dict(param.split('=', 1) for param in url.split('&') if '=' in param)
+            params = dict(param.split('=', 1) for param in url.split('&') if '=' in param)
             context.list_CSV.append(params)
 
 @step('Create url data list {param}')
 def url_list(context, param):
-    print("\nParams:")
+    print("\nURL Validation:")
     for match in context.list_CSV:
         if match is not None:
             for key, value in match.items():
                 if param in key or param in value:
-                    print(Fore.YELLOW + key + '=' + value + Style.RESET_ALL)
+                    print( key + '=' + value)
 
 
 @step('Create full data list {param}')
 def strong_list(context, param):
-    print("\nParams:")
+    print(f"\n{param}:")
     for match in context.list_CSV:
         if match is not None:
             if param in match.keys() and match[param]:
-                print(Fore.YELLOW + param + '=' + match[param] + Style.RESET_ALL, end="\n")
+                print(Fore.LIGHTYELLOW_EX + param + '=' + match[param] + Style.RESET_ALL, end="\n")
 
 # List of domains to check
 domains_to_count = [
@@ -117,13 +119,13 @@ def three_p_beacons_check(context):
             print(json.dumps(json.loads(decoded_data), indent=2))
 
             # Print the domain counts for domains with count > 0
-        print("Domain Counts:")
-        for domain, count in domain_counts.items():
-            if count > 0:
-                print(Fore.YELLOW + f"{domain}: {count}" + "\n" + Style.RESET_ALL, end="\n")
+    print(Fore.LIGHTRED_EX + "Domain Counts:" + Style.RESET_ALL, end="\n")
+    for domain, count in domain_counts.items():
+        if count > 0:
+            print(Fore.YELLOW + f"{domain}: {count}" + "\n" + Style.RESET_ALL, end="\n")
 
-        # Print all unique domains without subdomains
-        print("Unique Domains without Subdomains:")
-        for domain in unique_domains:
-            domain_without_subdomain = domain.split('.')[-2:]  # Get the last two parts of the domain
-            print(Fore.LIGHTGREEN_EX + '.'.join(domain_without_subdomain) + "\n" + Style.RESET_ALL)
+    # Print all unique domains without subdomains
+    print(Fore.LIGHTRED_EX +  "Unique Domains without Subdomains:"  + Style.RESET_ALL, end="\n")
+    for domain in unique_domains:
+        domain_without_subdomain = domain.split('.')[-2:]  # Get the last two parts of the domain
+        print(Fore.LIGHTGREEN_EX + '.'.join(domain_without_subdomain) + "\n" + Style.RESET_ALL)
